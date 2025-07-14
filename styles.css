@@ -72,3 +72,32 @@ button.bloqueada {
     flex-direction: column;
   }
 }
+.barra-navegacion {
+  background-color: #f8bbd0;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.barra-navegacion ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.barra-navegacion a {
+  text-decoration: none;
+  color: #880e4f;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.barra-navegacion a:hover {
+  color: #4a148c;
+  text-decoration: underline;
+}
