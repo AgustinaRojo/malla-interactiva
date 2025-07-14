@@ -96,6 +96,22 @@ button.bloqueada {
   font-weight: bold;
   transition: color 0.2s ease;
 }
+.barra-navegacion a.especial {
+  background-color: #f3e5f5;
+  color: #6a1b9a;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  border: 2px dashed #ba68c8;
+  transition: all 0.3s ease;
+}
+
+.barra-navegacion a.especial:hover {
+  background-color: #e1bee7;
+  color: #4a148c;
+  text-decoration: underline;
+}
+
 
 .barra-navegacion a:hover {
   color: #4a148c;
