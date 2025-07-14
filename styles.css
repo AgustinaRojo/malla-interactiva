@@ -1,3 +1,4 @@
+/* Fondo y tipografía */
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #fff0f6;
@@ -6,23 +7,27 @@ body {
   padding: 20px;
 }
 
+/* Encabezado */
 header h1 {
   text-align: center;
-  font-size: 2em;
+  font-size: 2.4em;
   color: #d63384;
+  margin-bottom: 30px;
 }
 
+/* Títulos de años y cuatrimestres */
 h2 {
   color: #c2185b;
-  border-bottom: 2px solid #f8bbd0;
+  border-bottom: 2px dashed #f8bbd0;
   padding-bottom: 5px;
+  margin-top: 40px;
 }
-
-.cuatrimestre h3 {
-  margin-top: 30px;
+h3 {
   color: #ad1457;
+  margin-top: 30px;
 }
 
+/* Contenedores */
 .materias {
   display: flex;
   flex-wrap: wrap;
@@ -30,26 +35,40 @@ h2 {
   margin-top: 10px;
 }
 
-.materia {
+button.materia {
   background-color: #ffe0f0;
   border: 2px solid #d63384;
   border-radius: 8px;
   padding: 10px 15px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  font-size: 0.95em;
 }
 
-.materia:hover {
+/* Hover y efecto visual */
+button.materia:hover {
   background-color: #ffcce5;
 }
 
-.aprobada {
-  background-color: #d1c4e9 !important;
+/* Materia aprobada */
+button.aprobada {
+  background-color: #e6dbfa !important;
   border-color: #7e57c2 !important;
   color: #4a148c;
+  box-shadow: 0 0 10px rgba(126, 87, 194, 0.4);
+  transition: all 0.3s ease-in-out;
 }
 
-.bloqueada {
+/* Materia bloqueada */
+button.bloqueada {
   opacity: 0.5;
   cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .materias {
+    flex-direction: column;
+  }
 }
