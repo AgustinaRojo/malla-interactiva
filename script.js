@@ -34,8 +34,19 @@ materias.forEach(boton => {
 
     // 🔓 Desbloquear Núcleo Complementario + Aspectos Legales
     if (cicloCompleto) {
-      document.querySelectorAll('[data-id="aspectosLegales"], #nucleo-complementario .materia').forEach(m => {
-        m.classList.remove('bloqueada');
+  document.querySelectorAll('[data-id="aspectosLegales"], #nucleo-complementario .materia').forEach(m => {
+    m.classList.remove('bloqueada');
+  });
+
+  const noti = document.getElementById('notificacion-exito');
+  if (noti && noti.style.display === 'none') {
+    noti.style.display = 'block';
+    setTimeout(() => {
+      noti.style.display = 'none';
+    }, 4000); // se oculta en 4 segundos
+  }
+}
+
       });
     }
   });
