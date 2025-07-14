@@ -4,10 +4,36 @@ materias.forEach(boton => {
   boton.addEventListener('click', () => {
     if (boton.classList.contains('bloqueada')) return;
 
+    // ✅ Restricción adicional: no permitir aprobación si ciclo básico no está completo
+    const cicloBasicoRestrictivo = [
+      "aspectosLegales",
+      "softwareLibre", "bioinformatica", "politicasPublicas", "seminarios",
+      "videojuegos", "basesDatosII", "sig", "derechosDigitales", "ludificacion",
+      "semanticaLenguajes", "redesNeuronales", "programacionCuantica",
+      "cienciasDatos", "cienciaCiudadana", "calidadSoftware"
+    ];
+
+    const cicloBasicoFull = [
+      "elementos", "lectura", "matematicas",
+      "matematicaI", "introProg", "orgComp",
+      "estructuraDatos", "progObjetosI", "basesDatos",
+      "matematicaII", "progObjetosII", "redesComp", "sistemasOperativos", "progFuncional",
+      "interfaces", "algoritmos", "persistencia", "labSistemas"
+    ];
+
+    const cicloCompleto = cicloBasicoFull.every(id => {
+      return document.querySelector(`.materia[data-id="${id}"]`)?.classList.contains('aprobada');
+    });
+
+    if (!cicloCompleto && cicloBasicoRestrictivo.includes(boton.dataset.id)) {
+      return;
+    }
+
+    // ✅ Aprobar visualmente
     boton.classList.add('aprobada');
     const id = boton.dataset.id;
 
-    // Desbloquea materias dependientes
+    // ✅ Desbloquear materias dependientes
     materias.forEach(materia => {
       const requisitos = materia.dataset.prerrequisitos?.split(',') || [];
       const todosAprobados = requisitos.every(req => {
@@ -19,35 +45,19 @@ materias.forEach(boton => {
       }
     });
 
-    // ✅ Verificar si se completó TODO el ciclo básico
-    const cicloBasico = [
-      "elementos", "lectura", "matematicas",
-      "matematicaI", "introProg", "orgComp",
-      "estructuraDatos", "progObjetosI", "basesDatos",
-      "matematicaII", "progObjetosII", "redesComp", "sistemasOperativos", "progFuncional",
-      "interfaces", "algoritmos", "persistencia", "labSistemas"
-    ];
-
-    const cicloCompleto = cicloBasico.every(id => {
-      return document.querySelector(`.materia[data-id="${id}"]`)?.classList.contains('aprobada');
-    });
-
-    // 🔓 Desbloquear Núcleo Complementario + Aspectos Legales
+    // ✅ Al completar ciclo básico, desbloquear materias adicionales
     if (cicloCompleto) {
-  document.querySelectorAll('[data-id="aspectosLegales"], #nucleo-complementario .materia').forEach(m => {
-    m.classList.remove('bloqueada');
-  });
-
-  const noti = document.getElementById('notificacion-exito');
-  if (noti && noti.style.display === 'none') {
-    noti.style.display = 'block';
-    setTimeout(() => {
-      noti.style.display = 'none';
-    }, 4000); // se oculta en 4 segundos
-  }
-}
-
+      document.querySelectorAll('[data-id="aspectosLegales"], #nucleo-complementario .materia').forEach(m => {
+        m.classList.remove('bloqueada');
       });
+
+      const noti = document.getElementById('notificacion-exito');
+      if (noti && noti.style.display === 'none') {
+        noti.style.display = 'block';
+        setTimeout(() => {
+          noti.style.display = 'none';
+        }, 4000);
+      }
     }
   });
 });
