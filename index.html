@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malla Curricular Interactiva</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Malla Curricular Interactiva 🌸</h1>
+  </header>
+
+  <main>
+    <!-- PRIMER AÑO -->
+    <section class="año" id="primer-año">
+      <h2>Primer Año</h2>
+
+      <div class="cuatrimestre">
+        <h3>Ciclo Introductorio (1er Cuatrimestre)</h3>
+        <div class="materias">
+          <button class="materia" data-id="elementos">Elementos de programación</button>
+          <button class="materia" data-id="lectura">Lectura y escritura académica</button>
+          <button class="materia" data-id="matematicas">Matemática</button>
+        </div>
+      </div>
+
+      <div class="cuatrimestre">
+        <h3>Segundo Cuatrimestre</h3>
+        <div class="materias">
+          <button class="materia bloqueada" data-id="matematicaI" data-prerrequisitos="elementos,lectura,matematicas">Matemática I</button>
+          <button class="materia bloqueada" data-id="introProg" data-prerrequisitos="elementos,lectura,matematicas">Introducción a la Programación</button>
+          <button class="materia bloqueada" data-id="orgComp" data-prerrequisitos="elementos,lectura,matematicas">Organización de Computadoras</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
